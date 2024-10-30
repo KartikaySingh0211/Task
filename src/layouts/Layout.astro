@@ -1,4 +1,6 @@
 ---
+import Navbar from "../components/Navbar.astro";
+
 interface Props {
 	title: string;
 }
@@ -17,11 +19,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div style="height: 1000px;"></div>
-		<h1 class="text-center mt-12 text-3xl">
-			Stop Chasing Alerts and Start Preventing Threats
-		</h1>
+		<Navbar />
 		<slot class="flex justify-center items-center min-h-screen bg-gray-50" />
-		<div style="height: 1000px;"></div>
 	</body>
 </html>

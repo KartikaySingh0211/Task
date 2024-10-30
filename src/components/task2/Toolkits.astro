@@ -1,0 +1,87 @@
+<div class="flex justify-center relative">
+	<div>
+		<img
+			src="/public/t2.svg"
+			usemap="#headings-map"
+			alt="elements"
+			class="z-10 absolute"
+			id="image"
+		/>
+	</div>
+	<div>
+		<img src="/public/mark-bg-01.png" alt="background" />
+	</div>
+
+	<!-- Tooltip with semi-transparent background and smooth fade-in/out effect -->
+	<div
+		id="tooltip"
+		class="absolute bg-blue-900/80 text-white p-4 rounded-lg shadow-lg max-w-xs opacity-0 transition-opacity duration-300"
+		style="background-color: rgba(29, 78, 216, 0.4);"
+	>
+		<h3 class="font-bold text-lg mb-2" id="tooltip-title">Title</h3>
+		<p class="text-sm" id="tooltip-content">Content</p>
+	</div>
+
+	<map name="headings-map" id="headings-map">
+		<area
+			shape="rect"
+			coords="500,48, 750,270"
+			href="/"
+			alt="T1"
+			class="cursor-pointer"
+			data-title="T1"
+			data-content="Gain a unified view of all your assets and risk across the attack surface: unseen assets, IT, OT, IoT, cloud, identities, and applications."
+		/>
+		<area
+			shape="rect"
+			coords="530, 280, 700, 370"
+			href="/"
+			alt="EV"
+			class="cursor-pointer"
+			data-title="EV"
+			data-content="Experience seamless vulnerability assessments and risk prioritization."
+		/>
+		<area
+			shape="rect"
+			coords="300, 330, 470, 410"
+			href="/"
+			alt="Ap"
+			class="cursor-pointer"
+			data-title="Ap"
+			data-content="Access application management and security insights to protect key assets."
+		/>
+	</map>
+</div>
+
+<script>
+	const tooltip = document.getElementById("tooltip");
+	const area = document.querySelector('area[alt="T1"]');
+
+	function setTooltipPosition() {
+		const img = document.getElementById("image");
+		const imgRect = img.getBoundingClientRect();
+
+		tooltip.style.left = `${imgRect.left + 750}px`;
+		tooltip.style.top = `${imgRect.top + 70}px`;
+	}
+
+	// Show tooltip with fade-in effect
+	area.addEventListener("mouseenter", () => {
+		const img = document.getElementById("image");
+		setTooltipPosition();
+		tooltip.style.opacity = "1"; // Fade in
+		tooltip.classList.add("z-50");
+		img.style.opacity = "0.5";
+	});
+
+	area.addEventListener("mouseleave", () => {
+		const img = document.getElementById("image");
+		img.style.opacity = "1";
+		tooltip.style.opacity = "0"; // Fade out
+	});
+
+	// Optional: Re-hide tooltip if the window resizes
+	window.addEventListener("resize", () => {
+		tooltip.style.opacity = "0";
+	});
+</script>
