@@ -1,0 +1,113 @@
+---
+const data = [
+	{ label: " ", value: 4.1, color: "#ddd" },
+	{ label: " ", value: 2.8, color: "#ddd" },
+	{ label: " ", value: 3.5, color: "#ddd" },
+	{ label: " ", value: 47.0, color: "#ddd" },
+];
+---
+
+<div class="flex flex-col items-center">
+	<div class="flex items-center mx-auto w-[800px]">
+		<div class="text-left w-[162px]">
+			<h2 class="text-xl font-bold">Phishing Blocked</h2>
+			<p class="text-gray-500">Web Phishing</p>
+			<p class="text-gray-500">Links Missed</p>
+		</div>
+		<div class="flex justify-around items-end w-full" id="m1">
+			<div class="flex flex-col relative" id="b11">
+				<div class="p-4 rounded-full relative w-[75px]">
+					<img
+						src="/public/malware.png"
+						alt="img2"
+						class="absolute bottom-44 left-[74px]"
+					/>
+				</div>
+				<p
+					class="text-pink-500 font-semibold text-lg text-center absolute bottom-28 left-[74px]"
+				>
+					All Blocked!
+				</p>
+			</div>
+			<div>
+				<div
+					id="b22"
+					class="relative flex items-center justify-center w-20 rounded-t-[40px] -top-[118px] -right-[58px]"
+					style={`height: ${4.1 * 40}px; background-color: #ddd; transform: scaleY(-1);`}
+				>
+					<div
+						class="absolute top-28 text-lg font-bold text-gray-700"
+						style={{ transform: "scaleY(-1)" }}
+					>
+						{4.1}%
+					</div>
+				</div>
+			</div>
+			<div>
+				<div
+					id="b33"
+					class="relative flex items-center justify-center w-20 rounded-t-[40px] -top-[170px] -right-[41px]"
+					style={`height: ${2.8 * 40}px; background-color: #ddd; transform: scaleY(-1);`}
+				>
+					<div
+						class="absolute top-16 text-lg font-bold text-gray-700"
+						style={{ transform: "scaleY(-1)" }}
+					>
+						{2.8}%
+					</div>
+				</div>
+			</div>
+			<div>
+				<div
+					id="b44"
+					class="relative flex items-center justify-center w-20 rounded-t-[40px] -top-[142px] -right-6"
+					style={`height: ${3.5 * 40}px; background-color: #ddd; transform: scaleY(-1);`}
+				>
+					<div
+						class="absolute top-24 text-lg font-bold text-gray-700"
+						style={{ transform: "scaleY(-1)" }}
+					>
+						{3.5}%
+					</div>
+				</div>
+			</div>
+			<div>
+				<div
+					id="b55"
+					class="relative flex items-center justify-center w-20 rounded-t-[40px] -top-[0px] -right-2"
+					style={`height: ${47 * 6}px; background-color: #ddd; transform: scaleY(-1);`}
+				>
+					<div
+						class="absolute top-60 text-lg font-bold text-gray-700"
+						style={{ transform: "scaleY(-1)" }}
+					>
+						{47}%
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	import { gsap } from "gsap";
+	import ScrollTrigger from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener("DOMContentLoaded", () => {
+		gsap.fromTo(
+			"#m1",
+			{ y: -50, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.5,
+				ease: "power1.inOut",
+				scrollTrigger: {
+					trigger: "#m1",
+					end: "top 50%",
+					scrub: 1,
+				},
+			}
+		);
+	});
+</script>

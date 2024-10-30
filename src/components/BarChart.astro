@@ -1,0 +1,137 @@
+---
+import BarHeadings from "./BarHeadings.astro";
+
+const data = [
+	{ name: "Check Point", value: 99.8, color: "#ff007a" },
+	{ name: "Fortinet", value: 84.0, color: "#ddd" },
+	{ name: "Zscaler", value: 75.4, color: "#ddd" },
+	{ name: "Palo Alto Networks", value: 69.4, color: "#ddd" },
+	{ name: "Cisco", value: 47.8, color: "#ddd" },
+];
+---
+
+<div class="flex flex-col items-center">
+	<div class="flex items-center mx-auto w-[800px] mt-10">
+		<div class="text-left mb-8">
+			<h2 class="text-2xl font-semibold mb-1 w-52 abs">Malware Blocked</h2>
+			<p class="text-xl text-gray-500">Zero+1 Malware Prevention Rate</p>
+		</div>
+
+		<div class="flex justify-around items-end mt-20 w-full h-[200px]">
+			<div
+				id="b1"
+				class="relative flex items-center justify-center w-20 rounded-t-full"
+				style={`height: ${99.8 * 2.5}px; background-color: #ff007a;`}
+			>
+				<div class="absolute top-5 text-lg font-bold text-gray-700">
+					{99.8}%
+				</div>
+			</div>
+			<div
+				id="b2"
+				class="relative flex items-center justify-center w-20 rounded-t-full"
+				style={`height: ${84 * 2.5}px; background-color: #ddd;`}
+			>
+				<div class="absolute top-5 text-lg font-bold text-gray-700">
+					{84}%
+				</div>
+			</div>
+			<div
+				id="b3"
+				class="relative flex items-center justify-center w-20 rounded-t-full"
+				style={`height: ${75.4 * 2.5}px; background-color: #ddd;`}
+			>
+				<div class="absolute top-5 text-lg font-bold text-gray-700">
+					{75.4}%
+				</div>
+			</div>
+			<div
+				id="b4"
+				class="relative flex items-center justify-center w-20 rounded-t-full"
+				style={`height: ${69.4 * 2.5}px; background-color: #ddd;`}
+			>
+				<div class="absolute top-5 text-lg font-bold text-gray-700">
+					{69.4}%
+				</div>
+			</div>
+			<div
+				id="b5"
+				class="relative flex items-center justify-center w-20 rounded-t-full"
+				style={`height: ${47.8 * 2.5}px; background-color: #ddd;`}
+			>
+				<div class="absolute top-5 text-lg font-bold text-gray-700">
+					{47.8}%
+				</div>
+			</div>
+		</div>
+	</div>
+	<BarHeadings />
+</div>
+<script>
+	import { gsap } from "gsap";
+	import ScrollTrigger from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	document.addEventListener("DOMContentLoaded", () => {
+		gsap.fromTo(
+			"#b2",
+			{ height: 0, opacity: 0 },
+			{
+				height: 84 * 2.5,
+				opacity: 1,
+				duration: 2,
+				ease: "power4.inOut",
+				scrollTrigger: {
+					trigger: "#b2",
+					end: "top 100%",
+					scrub: 2,
+				},
+			}
+		);
+		gsap.fromTo(
+			"#b3",
+			{ height: 0, opacity: 0 },
+			{
+				height: 75.4 * 2.5,
+				opacity: 1,
+				duration: 1.5,
+				ease: "power4.inOut",
+				scrollTrigger: {
+					trigger: "#b3",
+					end: "top 90%",
+					scrub: 2,
+				},
+			}
+		);
+		gsap.fromTo(
+			"#b4",
+			{ height: 0, opacity: 0 },
+			{
+				height: 69.4 * 2.5,
+				opacity: 1,
+				duration: 1,
+				ease: "power4.inOut",
+				scrollTrigger: {
+					trigger: "#b4",
+					end: "top 85%",
+					scrub: 2,
+				},
+			}
+		);
+		gsap.fromTo(
+			"#b5",
+			{ height: 0, opacity: 0 },
+			{
+				height: 47.8 * 2.5,
+				opacity: 1,
+				duration: 1,
+				ease: "power4.inOut",
+				scrollTrigger: {
+					trigger: "#b5",
+					end: "top 80%",
+					scrub: 2,
+				},
+			}
+		);
+	});
+</script>
